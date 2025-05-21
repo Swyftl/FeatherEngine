@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatherEngine", "FeatherEngine\FeatherEngine.csproj", "{A68F5AE1-25F7-47CF-A8E7-07B3980B0B94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatherEngineTest", "FeatherEngineTest\FeatherEngineTest.csproj", "{CDDB9CF2-9C6C-4D3A-B198-8424ED56BB68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A68F5AE1-25F7-47CF-A8E7-07B3980B0B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68F5AE1-25F7-47CF-A8E7-07B3980B0B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68F5AE1-25F7-47CF-A8E7-07B3980B0B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68F5AE1-25F7-47CF-A8E7-07B3980B0B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDDB9CF2-9C6C-4D3A-B198-8424ED56BB68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDB9CF2-9C6C-4D3A-B198-8424ED56BB68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDB9CF2-9C6C-4D3A-B198-8424ED56BB68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDB9CF2-9C6C-4D3A-B198-8424ED56BB68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
