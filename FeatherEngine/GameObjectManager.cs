@@ -2,6 +2,7 @@
 
 public class GameObjectManager
 {
+    // Todo - Add scripts for each game object
     private List<IGameObject> _gameObjects;
 
     public GameObjectManager()
