@@ -3,4 +3,5 @@
 public interface IGameObject
 {
     void Process(double deltaTime);
+    void Ready();
 }
