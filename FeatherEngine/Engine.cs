@@ -10,8 +10,9 @@ public class Engine
     public int Height;
     public string Title;
     private int _fps;
-    private GameObjectManager _gameObjectManager;
-
+    
+    
+    public GameObjectManager ObjectManager;
     public RenderManager Renderer;
     
     public Engine(int width, int height, string title)
@@ -19,7 +20,7 @@ public class Engine
         this.Width = width;
         this.Height = height;
         this.Title = title;
-        this._gameObjectManager = new GameObjectManager();
+        this.ObjectManager = new GameObjectManager();
         this.Renderer = new RenderManager();
         Raylib.InitWindow(width, height, title);
     }
@@ -30,7 +31,7 @@ public class Engine
         if (!Raylib.WindowShouldClose())
         {
             double deltaTime = Raylib.GetFrameTime();
-            _gameObjectManager.ProcessGameObjects(deltaTime);
+            ObjectManager.ProcessGameObjects(deltaTime);
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.White);
 
