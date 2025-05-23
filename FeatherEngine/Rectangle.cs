@@ -18,9 +18,9 @@ public class Rectangle : IRenderable
         Raylib.DrawRectangle((int)Position.X, (int)Position.Y, (int)Scale.X, (int)Scale.Y , Color.Red);
     }
 
-    public void Set_Position(int newX, int newY)
+    public void Set_Position(Vec2 newPosition)
     {
-        this.Position = new Vec2(newX, newY);
+        this.Position = newPosition;
     }
 
     public void Change_Position(Vec2 newPosition)
