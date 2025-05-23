@@ -30,4 +30,16 @@ public class Input(KeyboardKey key)
             return false;
         }
     }
+
+    public int IsKeyDown_Int()
+    {
+        if (Raylib.IsKeyDown(InputKey))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
