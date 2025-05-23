@@ -17,6 +17,30 @@ public struct Vec2
         return new Vec2(a.X + b.X, a.Y + b.Y);
     }
 
+    public static bool operator !=(Vec2 a, Vec2 b)
+    {
+        if (a.X != b.X || a.Y != b.Y)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static bool operator ==(Vec2 a, Vec2 b)
+    {
+        if (a.X == b.X && a.Y == b.Y)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     // Vector subtraction
     public static Vec2 operator -(Vec2 a, Vec2 b)
     {
