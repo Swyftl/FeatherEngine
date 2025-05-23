@@ -1,6 +1,6 @@
 namespace FeatherEngine;
 
-public class Console
+public class Output
 {
     public void Print(string input)
     {
