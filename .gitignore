@@ -1,4 +1,5 @@
 FeatherEngineTest/
+FeatherEngineTest/Player.cs
 bin/
 obj/
 /packages/
