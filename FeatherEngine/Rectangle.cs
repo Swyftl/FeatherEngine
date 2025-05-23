@@ -4,7 +4,7 @@ namespace FeatherEngine;
 
 public class Rectangle : IRenderable
 {
-    private Vec2 Position;
+    public Vec2 Position { get; private set; }
     private Vec2 Scale;
 
     public Rectangle(Vec2 Position, Vec2 Scale)
@@ -18,13 +18,23 @@ public class Rectangle : IRenderable
         Raylib.DrawRectangle((int)Position.X, (int)Position.Y, (int)Scale.X, (int)Scale.Y , Color.Red);
     }
 
-    public void Change_Position(int newX, int newY)
+    public void Set_Position(int newX, int newY)
     {
         this.Position = new Vec2(newX, newY);
     }
 
-    public void Change_Size(int newWidth, int newHeight)
+    public void Change_Position(Vec2 newPosition)
     {
-        this.Scale = new Vec2(newWidth, newHeight);
+        this.Position = (Position + newPosition);
+    }
+
+    public void Set_Size(Vec2 newSize)
+    {
+        this.Scale = newSize;
+    }
+
+    public void Change_Size(Vec2 changeAmount)
+    {
+        this.Scale = Scale + changeAmount;
     }
 }
