@@ -16,6 +16,6 @@ public class Player: IRenderable, IGameObject
 Above I have assigned Renderable and GameObject. which allows it to be rendered, and for it to have a function called each frame.
 
 ## Current Features
-- [ ] Input Management
+- [x] Input Management
 - [ ] Scenes System
 - [x] Rendering System
