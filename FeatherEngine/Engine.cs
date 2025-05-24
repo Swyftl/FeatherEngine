@@ -17,6 +17,7 @@ public class Engine
     
     public Engine(int width, int height, string title)
     {
+        Raylib.SetTraceLogLevel(TraceLogLevel.Error);
         this.Width = width;
         this.Height = height;
         this.Title = title;
