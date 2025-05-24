@@ -105,4 +105,14 @@ public class Engine
     {
         Raylib.TakeScreenshot(filename);
     }
+
+    public float get_deltaTime()
+    {
+        return Raylib.GetFrameTime();
+    }
+
+    public float get_FPS()
+    {
+        return Raylib.GetFPS();
+    }
 }
