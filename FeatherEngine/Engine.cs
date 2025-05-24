@@ -65,4 +65,25 @@ public class Engine
         this._fps = fps;
         Raylib.SetTargetFPS(this._fps);
     }
+
+    public void set_window_fullscreen()
+    {
+        if (!Raylib.IsWindowFullscreen())
+        {
+            Raylib.ToggleFullscreen();   
+        }
+    }
+
+    public void set_window_windowed()
+    {
+        if (Raylib.IsWindowFullscreen())
+        {
+            Raylib.ToggleFullscreen();
+        }
+    }
+
+    public void toggle_fullscreen()
+    {
+        Raylib.ToggleFullscreen();
+    }
 }
