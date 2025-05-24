@@ -42,4 +42,16 @@ public class Input(KeyboardKey key)
             return 0;
         }
     }
+
+    public bool IsKeyJustPressed()
+    {
+        if (Raylib.IsKeyDown(InputKey))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
