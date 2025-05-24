@@ -14,6 +14,7 @@ public class Engine
     
     public GameObjectManager ObjectManager;
     public RenderManager Renderer;
+    public Output Console;
     
     public Engine(int width, int height, string title)
     {
@@ -23,6 +24,7 @@ public class Engine
         this.Title = title;
         this.ObjectManager = new GameObjectManager();
         this.Renderer = new RenderManager();
+        this.Console = new Output();
         Raylib.InitWindow(width, height, title);
     }
 
@@ -85,5 +87,10 @@ public class Engine
     public void toggle_fullscreen()
     {
         Raylib.ToggleFullscreen();
+    }
+
+    public void take_screenshot(string filename)
+    {
+        Raylib.TakeScreenshot(filename);
     }
 }
