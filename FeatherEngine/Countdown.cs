@@ -3,17 +3,18 @@ using System.Runtime.InteropServices.Swift;
 
 namespace FeatherEngine;
 
-public class Timer
+public class Countdown(float seconds)
 {
-    private float _seconds;
+    private float _seconds = seconds;
     public bool IsActive;
-    
-    public Timer(float seconds)
-    {
-        this._seconds = seconds;
-    }
 
     public void Start()
+    {
+        Thread startThread = new Thread(Start_Threaded);
+        startThread.Start();
+    }
+
+    private void Start_Threaded()
     {
         var stopwatch = new System.Diagnostics.Stopwatch();
         stopwatch.Start();
