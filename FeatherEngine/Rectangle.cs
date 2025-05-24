@@ -6,6 +6,7 @@ public class Rectangle : IRenderable
 {
     public Vec2 Position { get; private set; }
     private Vec2 Scale;
+    public bool Visible { get; set; } = true;
 
     public Rectangle(Vec2 Position, Vec2 Scale)
     {
@@ -15,7 +16,10 @@ public class Rectangle : IRenderable
     
     public void Draw()
     {
-        Raylib.DrawRectangle((int)Position.X, (int)Position.Y, (int)Scale.X, (int)Scale.Y , Color.Red);
+        if (Visible)
+        {
+            Raylib.DrawRectangle((int)Position.X, (int)Position.Y, (int)Scale.X, (int)Scale.Y , Color.Red);
+        }
     }
 
     public void Set_Position(Vec2 newPosition)
@@ -36,5 +40,10 @@ public class Rectangle : IRenderable
     public void Change_Size(Vec2 changeAmount)
     {
         this.Scale = Scale + changeAmount;
+    }
+
+    public void Set_Visible(bool isTrue)
+    {
+        Visible = isTrue;
     }
 }
