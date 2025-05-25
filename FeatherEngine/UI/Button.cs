@@ -20,6 +20,7 @@ public class Button : IRenderable
         this.Height = height;
         this.Collider = new RectangleCollider(x, y, width, height);
         this.Rect = new Rectangle(x, y, width, height);
+        // ToDo - Make the text of the button sit in the middle
         this.Text = new RenderText(Text, x, y);
     }
 
