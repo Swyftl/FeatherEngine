@@ -5,7 +5,10 @@ namespace FeatherEngine;
 
 public class RectangleCollider(int x, int y, int width, int height)
 {
-    // ToDo - Make passive collisions with other objects
+    /// <summary>
+    /// Determines whether the current mouse position is within the bounds of the rectangle collider.
+    /// </summary>
+    /// <returns>True if the mouse is inside the rectangle; otherwise, false.</returns>
     public bool CheckClick()
     {
         var mousePosition = Raylib.GetMousePosition();
