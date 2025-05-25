@@ -5,13 +5,13 @@ namespace FeatherEngine;
 public class Rectangle : IRenderable
 {
     public Vec2 Position { get; private set; }
-    private Vec2 Scale;
+    public Vec2 Scale { get; private set; }
     public bool Visible { get; set; } = true;
 
-    public Rectangle(Vec2 Position, Vec2 Scale)
+    public Rectangle(int X, int Y, int Width, int Height)
     {
-        this.Position = Position;
-        this.Scale = Scale;
+        this.Position = new Vec2(X, Y);
+        this.Scale = new Vec2(Width, Height);
     }
     
     public void Draw()
