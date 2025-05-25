@@ -61,7 +61,7 @@ public class Engine
         }
     }
 
-    public void change_window_title(string t)
+    public void set_title(string t)
     {
         Raylib.SetWindowTitle(t);
         this.Title = t;
