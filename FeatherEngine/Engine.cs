@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Raylib_cs;
 
 namespace FeatherEngine;
@@ -18,6 +18,13 @@ public class Engine
     public RenderManager Renderer;
     public Output Console;
     
+    /// <summary>
+    /// Initializes the game engine with the specified window size, title, and rendering mode (2D or 3D).
+    /// </summary>
+    /// <param name="width">The width of the game window in pixels.</param>
+    /// <param name="height">The height of the game window in pixels.</param>
+    /// <param name="title">The title of the game window.</param>
+    /// <param name="Is3D">If true, initializes the engine in 3D mode; otherwise, uses 2D mode.</param>
     public Engine(int width, int height, string title, bool Is3D)
     {
         Raylib.SetTraceLogLevel(TraceLogLevel.Error);
@@ -40,6 +47,9 @@ public class Engine
         }
     }
 
+    /// <summary>
+    /// Executes a single iteration of the main game loop, processing game objects and rendering the current frame. Closes the window and stops the engine if the window should close.
+    /// </summary>
     public void Run()
     {
         // Runs the function of the main loop
@@ -61,6 +71,10 @@ public class Engine
         }
     }
 
+    /// <summary>
+    /// Sets the window title to the specified string.
+    /// </summary>
+    /// <param name="t">The new title for the window.</param>
     public void set_title(string t)
     {
         Raylib.SetWindowTitle(t);
@@ -101,16 +115,28 @@ public class Engine
         Raylib.ToggleFullscreen();
     }
 
+    /// <summary>
+    /// Captures the current window and saves it as an image file with the specified filename.
+    /// </summary>
+    /// <param name="filename">The name of the file to save the screenshot to.</param>
     public void take_screenshot(string filename)
     {
         Raylib.TakeScreenshot(filename);
     }
 
+    /// <summary>
+    /// Returns the time elapsed during the last frame in seconds.
+    /// </summary>
+    /// <returns>Frame time in seconds.</returns>
     public float get_deltaTime()
     {
         return Raylib.GetFrameTime();
     }
 
+    /// <summary>
+    /// Returns the current frames per second.
+    /// </summary>
+    /// <returns>The current FPS value.</returns>
     public float get_FPS()
     {
         return Raylib.GetFPS();
