@@ -36,7 +36,7 @@ public class Engine
         }
         else
         {
-            Raylib.BeginMode2D(new Camera2D(Vector2.Zero, Vector2.Zero, 0.0f, 1.0f));
+            Raylib.BeginMode2D(new Raylib_cs.Camera2D(Vector2.Zero, Vector2.Zero, 0.0f, 1.0f));
         }
     }
 
