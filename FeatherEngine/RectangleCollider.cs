@@ -6,7 +6,7 @@ namespace FeatherEngine;
 public class RectangleCollider(int x, int y, int width, int height)
 {
     // ToDo - Make passive collisions with other objects
-    public bool checkClick()
+    public bool CheckClick()
     {
         var mousePosition = Raylib.GetMousePosition();
         if (Raylib.CheckCollisionPointRec(mousePosition,

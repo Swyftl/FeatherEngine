@@ -32,7 +32,7 @@ public class Button : IRenderable
 
     public bool ButtonClicked()
     {
-        if (Collider.checkClick() && Raylib.IsMouseButtonPressed(MouseButton.Left))
+        if (Collider.CheckClick() && Raylib.IsMouseButtonPressed(MouseButton.Left))
         {
             return true;
         }
