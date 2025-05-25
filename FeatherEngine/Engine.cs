@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using System.Numerics;
+using Raylib_cs;
 
 namespace FeatherEngine;
 
@@ -9,6 +10,7 @@ public class Engine
     public int Width;
     public int Height;
     public string Title;
+    public bool Is3D = false;
     private int _fps;
     
     
@@ -16,7 +18,7 @@ public class Engine
     public RenderManager Renderer;
     public Output Console;
     
-    public Engine(int width, int height, string title)
+    public Engine(int width, int height, string title, bool Is3D)
     {
         Raylib.SetTraceLogLevel(TraceLogLevel.Error);
         this.Width = width;
@@ -25,7 +27,17 @@ public class Engine
         this.ObjectManager = new GameObjectManager();
         this.Renderer = new RenderManager();
         this.Console = new Output();
+        this.Is3D = Is3D;
         Raylib.InitWindow(width, height, title);
+
+        if (Is3D)
+        {
+            Raylib.BeginMode3D(new Camera3D(Vector3.Zero, Vector3.Zero, new Vector3(0, 1, 0), 90.0f, CameraProjection.Perspective));
+        }
+        else
+        {
+            Raylib.BeginMode2D(new Raylib_cs.Camera2D(Vector2.Zero, Vector2.Zero, 0.0f, 1.0f));
+        }
     }
 
     public void Run()
@@ -49,7 +61,7 @@ public class Engine
         }
     }
 
-    public void change_window_title(string t)
+    public void set_title(string t)
     {
         Raylib.SetWindowTitle(t);
         this.Title = t;
@@ -92,5 +104,15 @@ public class Engine
     public void take_screenshot(string filename)
     {
         Raylib.TakeScreenshot(filename);
+    }
+
+    public float get_deltaTime()
+    {
+        return Raylib.GetFrameTime();
+    }
+
+    public float get_FPS()
+    {
+        return Raylib.GetFPS();
     }
 }
