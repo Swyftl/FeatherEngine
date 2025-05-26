@@ -12,6 +12,8 @@ public class Engine(int width, int height, string title)
 
     public bool Running = true;
 
+    public Performance performance;
+
     public void Init()
     {
 
@@ -33,6 +35,7 @@ public class Engine(int width, int height, string title)
         // Put all the nodes into the node manager
         _nodeManager = new NodeManager(renderer);
         _inputManager = new InputManager();
+        performance = new Performance();
     }
 
     public void Step()
@@ -62,6 +65,7 @@ public class Engine(int width, int height, string title)
         _nodeManager.RenderNodes();
             
         SDL.RenderPresent(renderer);
+        performance.Update();
     }
 
     public void Quit()
@@ -83,4 +87,26 @@ public IntPtr GetWindow()
     {
         return renderer;
     }
+}
+
+public class Performance
+{
+    private ulong _lastTime = SDL.GetPerformanceCounter();
+    private int _frameCount;
+    private double _fps;
+
+    public void Update()
+    {
+        _frameCount++;
+        var currentTime = SDL.GetPerformanceCounter();
+        var elapsedTime = (currentTime - _lastTime) / (double)SDL.GetPerformanceFrequency();
+
+        if (elapsedTime >= 0.1) return;
+
+        _fps = _frameCount / elapsedTime;
+        _frameCount = 0;
+        _lastTime = currentTime;
+    }
+
+    public double Fps => _fps;
 }
