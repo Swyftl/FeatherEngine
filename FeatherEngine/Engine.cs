@@ -6,6 +6,7 @@ namespace FeatherEngine;
 public class Engine(int width, int height, string title)
 {
     public NodeManager _nodeManager;
+    public InputManager _inputManager;
     private IntPtr window;
     private IntPtr renderer;
 
@@ -31,16 +32,27 @@ public class Engine(int width, int height, string title)
 
         // Put all the nodes into the node manager
         _nodeManager = new NodeManager(renderer);
+        _inputManager = new InputManager();
     }
 
     public void Step()
     {
         while (SDL.PollEvent(out var e))
         {
-            if ((SDL.EventType)e.Type == SDL.EventType.Quit)
+            switch ((SDL.EventType)e.Type)
             {
-                Running = false;
-                Quit();
+                case SDL.EventType.Quit:
+                    Running = false;
+                    Quit();
+                    return;
+                case SDL.EventType.KeyDown:
+                    var KeyDown = e.Key;
+                    _inputManager.KeyDown(KeyDown.Key);
+                    return;
+                case SDL.EventType.KeyUp:
+                    var KeyUp = e.Key;
+                    _inputManager.KeyUp(KeyUp.Key);
+                    return;
             }
         }
 

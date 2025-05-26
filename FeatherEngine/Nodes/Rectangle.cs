@@ -1,4 +1,5 @@
-﻿using SDL3;
+﻿using System.Numerics;
+using SDL3;
 
 namespace FeatherEngine.Nodes;
 
@@ -42,5 +43,27 @@ public class Rectangle : INode
     public void Destroy()
     {
         // Cleanup if needed
+    }
+
+    public void ChangePosition(float x, float y)
+    {
+        _rect.X = x;
+        _rect.Y = y;
+    }
+
+    public void ChangeSize(float w, float h)
+    {
+        _rect.W = w;
+        _rect.H = h;
+    }
+
+    public float GetX()
+    {
+        return _rect.X;
+    }
+
+    public float GetY()
+    {
+        return _rect.Y;
     }
 }
