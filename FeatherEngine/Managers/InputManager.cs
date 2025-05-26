@@ -5,32 +5,32 @@ namespace FeatherEngine.Managers;
 
 public class InputManager
 {
-    private List<Input> inputs = new List<Input>();
+    private List<Input> _inputs = [];
 
     private void AddInput(Input input)
     {
-        inputs.Add(input);
+        _inputs.Add(input);
     }
 
     public void RemoveInput(Input input)
     {
-        inputs.Remove(input);
+        _inputs.Remove(input);
     }
 
     public void KeyDown(SDL.Keycode key)
     {
-        foreach (var input in inputs.Where(input => input.Key == key))
+        foreach (var input in _inputs.Where(input => input.Key == key))
         {
-            input.OnKeyDown();
+            input.KeyDown = true;
             break;
         }
     }
 
     public void KeyUp(SDL.Keycode key)
     {
-        foreach (var input in inputs.Where(input => input.Key == key))
+        foreach (var input in _inputs.Where(input => input.Key == key))
         {
-            input.OnKeyUp();
+            input.KeyDown = false;
             break;
         }
     }

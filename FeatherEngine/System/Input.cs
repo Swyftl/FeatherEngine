@@ -2,20 +2,25 @@
 
 namespace FeatherEngine.System;
 
-public class Input(SDL.Keycode key)
+public class Input
 {
 
     public SDL.Keycode Key;
-    
-    public bool OnKeyDown()
+    public bool KeyDown = false;
+
+    public Input(SDL.Keycode key)
     {
-        // ToDo - This must do something
-        return false;
+        this.Key = key;
+        this.KeyDown = false;
+    }
+    
+    public bool IsKeyPressed()
+    {
+        return KeyDown;
     }
 
     public bool OnKeyUp()
     {
-        // ToDo - Make this do something
-        return false;
+        return !KeyDown;
     }
 }
