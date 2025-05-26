@@ -1,14 +1,18 @@
-using System;
-using FeatherEngine;
+using FeatherEngine.Managers;
 using FeatherEngine.Nodes;
 using SDL3;
 
+namespace FeatherEngine;
+
 public class Engine(int width, int height, string title)
 {
-    private INode _node;
+    private NodeManager? _nodeManager;
+    
+    private INode? _node;
 
     public void Run()
     {
+        
         if (!SDL.Init(SDL.InitFlags.Video))
         {
             Console.WriteLine("SDL3 init failed.");
@@ -20,9 +24,14 @@ public class Engine(int width, int height, string title)
             SDL.LogError(SDL.LogCategory.Application, $"Error creating window and rendering: {SDL.GetError()}");
             return;
         }
-
-        _node = new Rectangle(200, 150, 400, 300, 255, 0, 0);
+        
+        // Put all the nodes into the node manager
+        _nodeManager = new NodeManager(renderer);
+        
+        _node = new Rectangle(200, 150, 400, 300, 255, 100, 100);
         _node.Init(window, renderer);
+        
+        _nodeManager.AddNode(_node);
 
         bool running = true;
         while (running)
@@ -35,11 +44,14 @@ public class Engine(int width, int height, string title)
                 }
             }
 
+            SDL.SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL.RenderClear(renderer);
+            
+            _nodeManager.RenderNodes();
+            
             SDL.RenderPresent(renderer);
         }
-
-        _node.Destroy();
+        _nodeManager.OnQuit();
         SDL.DestroyRenderer(renderer);
         SDL.DestroyWindow(window);
         
