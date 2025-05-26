@@ -49,12 +49,12 @@ public class Engine(int width, int height, string title)
                     Quit();
                     return;
                 case SDL.EventType.KeyDown:
-                    var KeyDown = e.Key;
-                    _inputManager.KeyDown(KeyDown.Key);
+                    var keyDown = e.Key;
+                    _inputManager.KeyDown(keyDown.Key);
                     return;
                 case SDL.EventType.KeyUp:
-                    var KeyUp = e.Key;
-                    _inputManager.KeyUp(KeyUp.Key);
+                    var keyUp = e.Key;
+                    _inputManager.KeyUp(keyUp.Key);
                     return;
             }
         }
@@ -106,6 +106,7 @@ public class Performance
         _fps = _frameCount / elapsedTime;
         _frameCount = 0;
         _lastTime = currentTime;
+        Console.WriteLine(elapsedTime);
     }
 
     public double Fps => _fps;
