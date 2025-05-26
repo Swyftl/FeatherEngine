@@ -1,3 +1,4 @@
+using System.Data.SqlTypes;
 using FeatherEngine.Managers;
 using FeatherEngine.Nodes;
 using SDL3;
@@ -6,13 +7,15 @@ namespace FeatherEngine;
 
 public class Engine(int width, int height, string title)
 {
-    private NodeManager? _nodeManager;
-    
-    private INode? _node;
+    public NodeManager _nodeManager;
+    private IntPtr window;
+    private IntPtr renderer;
 
-    public void Run()
+    public bool Running = true;
+
+    public void Init()
     {
-        
+
         if (!SDL.Init(SDL.InitFlags.Video))
         {
             Console.WriteLine("SDL3 init failed.");
@@ -24,37 +27,49 @@ public class Engine(int width, int height, string title)
             SDL.LogError(SDL.LogCategory.Application, $"Error creating window and rendering: {SDL.GetError()}");
             return;
         }
-        
+
+        this.window = window;
+        this.renderer = renderer;
+
         // Put all the nodes into the node manager
         _nodeManager = new NodeManager(renderer);
-        
-        _node = new Rectangle(200, 150, 400, 300, 255, 100, 100);
-        _node.Init(window, renderer);
-        
-        _nodeManager.AddNode(_node);
+    }
 
-        bool running = true;
-        while (running)
+    public void Step()
+    {
+        while (SDL.PollEvent(out var e))
         {
-            while (SDL.PollEvent(out var e))
+            if ((SDL.EventType)e.Type == SDL.EventType.Quit)
             {
-                if ((SDL.EventType)e.Type == SDL.EventType.Quit)
-                {
-                    running = false;
-                }
+                Running = false;
             }
-
-            SDL.SetRenderDrawColor(renderer, 0, 0, 0, 255);
-            SDL.RenderClear(renderer);
-            
-            _nodeManager.RenderNodes();
-            
-            SDL.RenderPresent(renderer);
         }
+
+        SDL.SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL.RenderClear(renderer);
+            
+        _nodeManager.RenderNodes();
+            
+        SDL.RenderPresent(renderer);
+    }
+
+    public void Quit()
+    {
+        Running = false;
         _nodeManager.OnQuit();
         SDL.DestroyRenderer(renderer);
         SDL.DestroyWindow(window);
-        
+
         SDL.Quit();
+    }
+
+public IntPtr GetWindow()
+    {
+        return window;
+    }
+
+    public IntPtr GetRenderer()
+    {
+        return renderer;
     }
 }
