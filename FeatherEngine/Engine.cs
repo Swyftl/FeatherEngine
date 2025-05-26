@@ -42,6 +42,7 @@ public class Engine(int width, int height, string title)
             if ((SDL.EventType)e.Type == SDL.EventType.Quit)
             {
                 Running = false;
+                Quit();
             }
         }
 
