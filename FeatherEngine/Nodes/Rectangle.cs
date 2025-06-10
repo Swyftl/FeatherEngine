@@ -45,13 +45,13 @@ public class Rectangle : INode
         // Cleanup if needed
     }
 
-    public void ChangePosition(float x, float y)
+    public void SetPosition(float x, float y)
     {
         _rect.X = x;
         _rect.Y = y;
     }
 
-    public void ChangeSize(float w, float h)
+    public void SetSize(float w, float h)
     {
         _rect.W = w;
         _rect.H = h;
